@@ -7,7 +7,22 @@ const Cards = (props) => {
         setStatus(e.target.value);
     }
     const handleupdate=async ()=>{
-        const res=fetch('http://localhost:8000/api/task/update/{id}')
+        const res=fetch('http://localhost:8000/api/task/update/{id}',{id:props.item.tid},{
+          method:"PUT",
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify({
+            tname:props.item.tname,
+            tdesc:props.item.tdesc,
+            tstatus:Status,
+            dname: props.item.dname,
+            did:props.item.did,
+            tid:props.item.tid
+          })
+        }
+        )
+        // const response=await res.json();
     }
   return (
      <>
@@ -24,7 +39,7 @@ const Cards = (props) => {
  <label for="status">Status</label>
          <button>{props.item.tstatus}</button>
  
-      <select name="status" id="trole" onChange={handleOptions}>
+      <select name="status" id="trole" onChange={handleOptions} onClick={handleupdate}>
         <option value="javascript"  >Assigned</option>
         <option value="php">In-progress</option>
         <option value="java">Completed</option>

@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import '../Components/css/login.css'
 
 const Login = () => {
-    const [User, setUser] = useState({email: "", password: ""})
+    const [User, setUser] = useState({email: "", password: "",})
     const handlechange=(e)=>{
         setUser({ ...User, [e.target.name]: e.target.value })
     }
@@ -17,12 +17,12 @@ const Login = () => {
             },
             body: JSON.stringify({ demail: User.email, dpass: User.password })
                     });
-    const json = await response.json();
-    console.log(json);
-    if (json.success) {
+    const res = await response.json();
+    
+    if (res) {
         //save the auth toke to local storage and redirect
-        localStorage.setItem('userEmail', User.email)
-        localStorage.setItem('token', json.token);
+        localStorage.setItem('user', JSON.stringify(res.user))
+        localStorage.setItem('Authorization', res.token);
         window.location.href = "/"
     }
     else {

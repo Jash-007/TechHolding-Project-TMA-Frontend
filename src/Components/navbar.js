@@ -1,6 +1,11 @@
 import React from 'react'
 import './css/navbar.css'
 const Navbar = () => {
+ const handleLogout=()=>{
+  localStorage.removeItem("user");
+  localStorage.removeItem("Authorization");
+  // window.location.reload();
+  }
   return (
     <>
     <div class="nav">
@@ -23,6 +28,7 @@ const Navbar = () => {
     <a href="http://stackoverflow.com/users/4084003/" target="_blank">Stackoverflow</a>
     <a href="https://in.linkedin.com/in/jonesvinothjoseph" target="_blank">LinkedIn</a> */}
     <a href="/" target="_blank">Admin</a>
+    <a href="/login" target="_blank" onClick={handleLogout}>Logout</a>
     <a href="/" target="_blank">User</a>
   </div>
 </div>
