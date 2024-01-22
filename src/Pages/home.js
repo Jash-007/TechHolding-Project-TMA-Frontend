@@ -6,10 +6,10 @@ import Cards from '../Components/cards'
 const Home = () => {
   const [Tasks, setTasks] = useState([]);
   const loadtask =async ()=>{
-    const response=await fetch('http://localhost:8000/api/task/')
+    const response=await fetch('http://localhost:8000/api/task/view')
     const res= await response.json();
     //console.log(res.results);
-    setTasks(res.results.rows);
+     setTasks(res.results.rows);
     //console.log(Tasks);
   }
   useEffect(()=>{
