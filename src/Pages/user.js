@@ -1,18 +1,82 @@
 import React, { useState, useEffect } from 'react'
 import { getLoggedInUser, getToken } from '../Utls/auth';
-
+import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 export const User = () => {
-
+    const [User,setUser]=useState([])
+   // const [Task,setTask]=useState([])
+    const datafetch=async ()=>{
+        const response=await axios.get(`http://localhost:8000/api/dev/viewbyid/${getLoggedInUser().did}`, {headers:{token : getToken()}})
+        console.log(response.data);
+       // res.json(response.data);
+        setUser(response.data[0])
+    }
+   
+   
+    // const taskfetch=async()=>{
+    //     const did=User.did
+    //     console.log(did);
+    //     const response=await axios.get(`http://localhost:8000/api/task/user/${did}`, {headers:{token : getToken()}})
+    //     console.log(response.data);
+    //     setTask(response.data[0])
+    //    // res.json(response.data);
+    // }
+   // console.log(Task)
     useEffect(() => {
-        fetch(`http://localhost:8000/api/dev/${getLoggedInUser().did}`, {
-            headers: {
-                "Authorization": getToken()
-            }
-        }).then(async res => {
-            console.log(await res.json());
-        });
+        datafetch()
+       // taskfetch()
     }, [])
+    console.log(User);
+    const nav=useNavigate();
+    const updatedev=async (item)=>{
+        console.log(item);
+        nav('/updatedev',{state:{item}})
+        
+      }
+      const deldev=async(item)=>{
+        const res=await axios.delete(`http://localhost:8000/api/dev/deldev/${item}`,{headers:{token : getToken()}});
+        console.log(res.data);
+      }
     return (
-        <div>User</div>
+        <>
+         <div class="ag-format-container">
+    <div class="ag-courses_box">
+      <div class="ag-courses_item">
+        <h2 class="ag-courses-item_link">
+            {User.demail}
+          <div class="ag-courses-item_bg"></div>
+          <div class="ag-courses-item_title">
+  {User.dname}
+          </div>
+          <div class="ag-courses-item_date-box">
+
+            Role:
+            <span class="ag-courses-item_date">
+              {User.drole}
+            </span>
+            <br></br>
+         
+   <button onClick={()=>{updatedev(User.did)}}>Update</button>
+   <br></br><br></br>
+   <div style={{color:'red'}}>
+   <button  onClick={()=>{deldev(User.did)}}>Delete</button></div>
+   {/* End: {Task.tend} */}
+          </div>
+        </h2>
+      </div>
+  
+    
+  
+   
+  
+  
+    
+  
+    
+      
+  
+    </div>
+  </div>
+        </>
     )
 }

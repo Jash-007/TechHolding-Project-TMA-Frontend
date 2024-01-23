@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import '../Components/css/login.css'
+import { getToken } from '../Utls/auth'
 
 const Login = () => {
     const [User, setUser] = useState({email: "", password: "",})
@@ -13,7 +14,7 @@ const Login = () => {
             // Origin:"http://localhost:3000/login",
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({ demail: User.email, dpass: User.password })
                     });

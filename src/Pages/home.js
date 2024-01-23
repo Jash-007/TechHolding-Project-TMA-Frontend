@@ -2,6 +2,7 @@ import React from 'react'
 import {useState,useEffect} from 'react' 
 import Navbar from '../Components/navbar'
 import Cards from '../Components/cards'
+import { Singletask } from '../Components/singletask'
 
 const Home = () => {
   const [Tasks, setTasks] = useState([]);
@@ -19,10 +20,10 @@ const Home = () => {
     <>
     <Navbar/>
     <h1>Task Display</h1>
-    <div style={{border:"2px solid red", display:"grid", gridTemplateColumns:"repeat(3,1fr)"}}>
+    <div style={{ display:"grid", gridTemplateColumns:"repeat(2,1fr)"}}>
     {
       Tasks.map((item,index)=>{
-        return <Cards key={index} item={item}/>
+        return <Singletask key={index} item={item}/>
       })
     }
     </div>

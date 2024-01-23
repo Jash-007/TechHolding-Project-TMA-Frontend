@@ -6,8 +6,13 @@ import Login from './Pages/login';
 import { getLoggedInUser, getToken, isAdmin, isAuthorized } from './Utls/auth';
 import { User } from './Pages/user';
 import { Admin } from './Pages/admin';
-import { Singletask } from './Pages/singletask';
+import { Singletask } from './Components/singletask';
 import { Addnewtask } from './Pages/addnewtask';
+import { Singledev } from './Components/singledev';
+import { Alldev } from './Pages/alldev';
+import { Addnewdev } from './Pages/addnewdev';
+import { Updatetask } from './Pages/updatetask';
+import { Updatedev } from './Pages/updatedev';
 function App() {
   // console.log(getToken());
   return (
@@ -19,6 +24,12 @@ function App() {
         <Route path="/admin" element={<Admin/>} />
         <Route path="/SingleTask" element={<Singletask/>} />
         <Route path="/addnewtask" element={<Addnewtask/>} />
+        <Route path="/alltask" element={<Home />} />
+        <Route path="/alldev" element={<Alldev/>} />
+        <Route path="/addnewdev" element={<Addnewdev/>} />
+        <Route path="/updatetask" element={<Updatetask/>} />
+        <Route path="/singledev" element={<Singledev/>} />
+        <Route path="/updatedev" element={<Updatedev/>} />
       </Routes>
     </BrowserRouter>
   );

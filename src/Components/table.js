@@ -16,8 +16,8 @@ export const Table = (props) => {
     //     const response=await res.json();
     //    console.log(response);
  
-            navigate('/SingleTask', {state:{item: item}})
-               
+    console.log(item)
+            navigate('/SingleTask', {state: {item: item}})
         // console.log(response);
        // setStatus(response.tstatus);
     }
@@ -48,8 +48,8 @@ export const Table = (props) => {
                     <th>Assigned To</th>
                 </tr>
                 <tr >
-                    <td>{props.item.tname}</td>
-                    <td>{fn(props.item.tdesc,20)}</td>
+                    <td>{fn(props.item.tname,12)}</td>
+                    <td>{fn(props.item.tdesc,16)}</td>
                     <td > {props.item.tstatus}  
                    
                     </td>

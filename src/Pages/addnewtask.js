@@ -28,8 +28,8 @@ export const Addnewtask = () => {
     return (
     <>
     <div class="register">
-            <div class="container">
-                <div class="title">Registration</div>
+            <div class="containernewtask">
+                <div class="title">New Task</div>
                 <div class="content">
                     <form action="#" onSubmit={handlesubmit}>
                         <div class="user-details">

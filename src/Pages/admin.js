@@ -1,10 +1,11 @@
 import {React,useState,useEffect,createContext} from 'react'
 import {useNavigate} from 'react-router-dom'
 import '../Components/css/admin.css'
-import '../Components/images/school.png'
+
 import { Table } from '../Components/table'
-import { Singletask } from './singletask'
+import { Singletask } from '../Components/singletask'
 import { Devtable } from '../Components/devtable'
+import { getToken } from '../Utls/auth'
 export const Admin = () => {
     const [Tasks, setTasks] = useState([]);
     const [Dev,setDev]=useState([]);
@@ -23,38 +24,50 @@ export const Admin = () => {
     const countadmin=async()=>{
         const response=await fetch('http://localhost:8000/api/dev/countadmin')
         const res= await response.json();
-        console.log(res.results);
+      //  console.log(res.results);
         setAdmincount(res.results.rows[0].count);
-        console.log(Admincount);
+       // console.log(Admincount);
+    }
+    const logout=()=>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        navigate('/login');
     }
     const devcount=async()=>{
         const response=await fetch('http://localhost:8000/api/dev/count')
         const res= await response.json();
-        console.log(res.results);
+        //console.log(res.results);
         setDevcount(res.results.rows[0].count);
-        console.log(Devcount);
+       // console.log(Devcount);
     }
     const taskcount=async()=>{
         const response=await fetch('http://localhost:8000/api/task/count')
         const res= await response.json();
-        console.log(res.results);
+        //console.log(res.results);
         setTaskcount(res.results.rows[0].count);
-        console.log(Taskcount);
+       // console.log(Taskcount);
     }
     const loaddev =async ()=>{
-        const response=await fetch('http://localhost:8000/api/dev/')
+        const response=await fetch('http://localhost:8000/api/dev/viewless', {headers:{token : getToken()}})
         const res= await response.json();
         console.log(res.results);
-        setDev(res.results);
-        //console.log(dev);
+       setDev(res.results);
+        //console.log(Dev);
     }
     const viewAll=()=>{
-       navigate('/');
+       navigate('/alltask');
         
         //console.log(Tasks);
     }
+    const viewalldev=()=>{
+        navigate('/alldev');
+        //console.log(Dev);
+    }
     const add= ()=>{
         navigate('/addnewtask')
+    }
+    const adddev=()=>{
+        navigate('/addnewdev')
     }
     useEffect(()=>{
       loadtask();
@@ -68,16 +81,14 @@ export const Admin = () => {
     <>
     <div class="side-menu">
     <div class="brand-name">
-        <h1>Brand</h1>
+        <h1>TMA</h1>
     </div>
     <ul>
-        <li><img src='../Components/images/school.png' alt=""/>&nbsp; <span>Dashboard</span> </li>
-        <li><img src="reading-book (1).png" alt=""/>&nbsp;<span>Students</span> </li>
-        <li><img src="teacher2.png" alt=""/>&nbsp;<span>Teachers</span> </li>
-        <li><img src="../Components/images/school.png" alt=""/>&nbsp;<span>Schools</span> </li>
-        <li><img src="payment.png" alt=""/>&nbsp;<span>Income</span> </li>
-        <li><img src="help-web-button.png" alt=""/>&nbsp; <span>Help</span></li>
-        <li><img src="settings.png" alt=""/>&nbsp;<span>Settings</span> </li>
+        <li><img src='https://cdn-icons-png.flaticon.com/512/8899/8899687.png' alt="" height={20} width={20}/>&nbsp; <span>Dashboard</span> </li>
+        <li><img src="https://cdn-icons-png.flaticon.com/512/6840/6840478.png" alt="" height={20} width={20}/>&nbsp;<span>Developers</span> </li>
+        <li><img src="https://cdn-icons-png.flaticon.com/512/2098/2098402.png" alt="" height={20} width={20}/>&nbsp;<span>Tasks</span> </li>
+        <li><img src="https://cdn.iconscout.com/icon/free/png-256/free-administrator-6992387-5728885.png" alt="" height={20} width={20}/>&nbsp;<span>Admin</span> </li>
+       
     </ul>
 </div>
 <div class="container">
@@ -89,8 +100,8 @@ export const Admin = () => {
             </div>
             <div class="user">
                 <a href="#" class="btn" onClick={add}>Add New</a>
-               
-               
+                <a href="#" class="btn" onClick={adddev}>Add Dev</a>
+                <a href="#" class="btn" onClick={logout}>Logout</a>
             </div>
         </div>
     </div>
@@ -143,10 +154,10 @@ export const Admin = () => {
       })
     }
             </div>
-            {/* <div class="new-students">
+            <div class="new-students">
                 <div class="title">
-                    <h2>New Students</h2>
-                    <a href="#" class="btn">View All</a>
+                    <h2>Developers</h2>
+                    <a href="#" class="btn" onClick={viewalldev}>View All</a>
                 </div>
                {
                 Dev.map((item,index)=>{
@@ -157,7 +168,7 @@ export const Admin = () => {
                    
                     )})
                }
-            </div> */}
+            </div>
         </div>
     </div>
 </div>

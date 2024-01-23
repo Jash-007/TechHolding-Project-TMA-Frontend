@@ -13,9 +13,11 @@ a {
 li {
     list-style: none;
 }
-h1,
+h1{
+    color: #1d1d1d;
+}
 h2 {
-    color: #444;
+    color: #d8d7d7;
 }
 h3 {
     color: #999;
