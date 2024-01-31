@@ -55,7 +55,7 @@ export const Addnewtask = () => {
                             </div>
                             <div class="input-box">
                                 <span class="details">Assign To</span>
-                                <input type="text" placeholder="Enter no to which developer" name='dname' id='dname' value={data.did} onChange={handleinput} required />
+                                <input type="text" placeholder="Enter no to which developer" name='did' id='did' value={data.did} onChange={handleinput} required />
                             </div>
                         </div>
                        <button class="button" type='submit'>Submit </button>

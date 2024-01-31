@@ -6,7 +6,8 @@ export const User = () => {
     const [User,setUser]=useState([])
    // const [Task,setTask]=useState([])
     const datafetch=async ()=>{
-        const response=await axios.get(`http://localhost:8000/api/dev/viewbyid/${getLoggedInUser().did}`, {headers:{token : getToken()}})
+      console.log(getLoggedInUser().did);
+        const response=await axios.get(`http://localhost:8000/api/task/user/${getLoggedInUser().did}`, {headers:{token : getToken()}})
         console.log(response.data);
        // res.json(response.data);
         setUser(response.data[0])
@@ -43,16 +44,26 @@ export const User = () => {
     <div class="ag-courses_box">
       <div class="ag-courses_item">
         <h2 class="ag-courses-item_link">
-            {User.demail}
+          {User.tname}
           <div class="ag-courses-item_bg"></div>
           <div class="ag-courses-item_title">
   {User.dname}
           </div>
+          <br />
+          {User.tdesc}
+          <br></br>
+          Start: {User.tstart}
+          <br></br>
+          End: {User.tend}
           <div class="ag-courses-item_date-box">
 
             Role:
             <span class="ag-courses-item_date">
               {User.drole}
+            </span><br />
+            Status: 
+            <span class="ag-courses-item_date">
+              {User.tstatus}
             </span>
             <br></br>
          
