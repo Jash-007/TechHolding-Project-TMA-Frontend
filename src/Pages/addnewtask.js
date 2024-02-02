@@ -16,7 +16,7 @@ export const Addnewtask = () => {
     )
     const nav = useNavigate()
     const handlesubmit=async ()=>{
-        const response = await axios.post('http://localhost:8000/api/task/add', { tname: data.tname, tdesc: data.tdesc, tstart: data.tstart,tend: data.tend,tstatus: data.tstatus,dname : data.dname,did: data.did });
+        const response = await axios.post('http://localhost:8000/api/task/v1/addTask', { tname: data.tname, tdesc: data.tdesc, tstart: data.tstart,tend: data.tend,tstatus: data.tstatus,dname : data.dname,did: data.did });
         console.log(response.data);
         nav('/admin')
     }

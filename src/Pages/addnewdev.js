@@ -19,7 +19,7 @@ export const Addnewdev = () => {
     setData({ ...data, [name]: value });
     }
     const handlesubmit=async()=>{
-        const response = await axios.post('http://localhost:8000/api/dev/add', { demail:data.demail, dname: data.dname, dpass:data.dpass,drole:data.drole },{headers:{token : getToken()}});
+        const response = await axios.post('http://localhost:8000/api/dev/v1/addDev', { demail:data.demail, dname: data.dname, dpass:data.dpass,drole:data.drole },{headers:{token : getToken()}});
         console.log(response.data);
         navigate('/admin');
     }

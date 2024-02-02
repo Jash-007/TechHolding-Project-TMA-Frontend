@@ -7,7 +7,7 @@ const Cards = (props) => {
         setStatus(e.target.value);
     }
     const handleupdate=async ()=>{
-        const res=fetch('http://localhost:8000/api/task/update/{id}',{id:props.item.tid},{
+        const res=fetch('http://localhost:8000/api/task/v1/update/{id}',{id:props.item.tid},{
           method:"PUT",
           headers:{
             "Content-Type":"application/json"

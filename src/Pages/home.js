@@ -7,7 +7,7 @@ import { Singletask } from '../Components/singletask'
 const Home = () => {
   const [Tasks, setTasks] = useState([]);
   const loadtask =async ()=>{
-    const response=await fetch('http://localhost:8000/api/task/view')
+    const response=await fetch('http://localhost:8000/api/task/v1/view')
     const res= await response.json();
     //console.log(res.results);
      setTasks(res.results.rows);

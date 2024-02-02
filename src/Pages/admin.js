@@ -15,14 +15,14 @@ export const Admin = () => {
     const UserContext = createContext()
     const navigate = useNavigate()
     const loadtask =async ()=>{
-      const response=await fetch('http://localhost:8000/api/task/')
+      const response=await fetch('http://localhost:8000/api/task/v1/')
       const res= await response.json();
       //console.log(res.results);
       setTasks(res.results.rows);
       //console.log(Tasks);
     }
     const countadmin=async()=>{
-        const response=await fetch('http://localhost:8000/api/dev/countadmin')
+        const response=await fetch('http://localhost:8000/api/dev/v1/countadmin')
         const res= await response.json();
       //  console.log(res.results);
         setAdmincount(res.results.rows[0].count);
@@ -34,21 +34,21 @@ export const Admin = () => {
         navigate('/login');
     }
     const devcount=async()=>{
-        const response=await fetch('http://localhost:8000/api/dev/count')
+        const response=await fetch('http://localhost:8000/api/dev/v1/count')
         const res= await response.json();
         //console.log(res.results);
         setDevcount(res.results.rows[0].count);
        // console.log(Devcount);
     }
     const taskcount=async()=>{
-        const response=await fetch('http://localhost:8000/api/task/count')
+        const response=await fetch('http://localhost:8000/api/task/v1/count')
         const res= await response.json();
         //console.log(res.results);
         setTaskcount(res.results.rows[0].count);
        // console.log(Taskcount);
     }
     const loaddev =async ()=>{
-        const response=await fetch('http://localhost:8000/api/dev/viewless', {headers:{token : getToken()}})
+        const response=await fetch('http://localhost:8000/api/dev/v1/viewless', {headers:{token : getToken()}})
         const res= await response.json();
         console.log(res.results);
        setDev(res.results);

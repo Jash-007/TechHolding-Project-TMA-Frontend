@@ -14,7 +14,7 @@ export const Singletask = (props) => {
       
     }
     const deltask=async(item)=>{
-      const res=await axios.delete(`http://localhost:8000/api/task/deltask/${item}`);
+      const res=await axios.delete(`http://localhost:8000/api/task/v1/deleteTask/${item}`);
       console.log(res.data);
     }
     // console.log(location.state);

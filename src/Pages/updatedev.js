@@ -42,7 +42,7 @@ export const Updatedev = (props) => {
         console.log(did);
         try {
             console.log(data)
-            const response = await axios.put(`http://localhost:8000/api/dev/update/${did}`,  { demail:data.demail, dname: data.dname, dpass:data.dpass,drole:data.drole });
+            const response = await axios.put(`http://localhost:8000/api/dev/v1/updateDev/${did}`,  { demail:data.demail, dname: data.dname, dpass:data.dpass,drole:data.drole });
             console.log(response.data);
            // nav('/admin')
         }

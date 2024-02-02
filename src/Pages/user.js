@@ -7,7 +7,7 @@ export const User = () => {
    // const [Task,setTask]=useState([])
     const datafetch=async ()=>{
       console.log(getLoggedInUser().did);
-        const response=await axios.get(`http://localhost:8000/api/task/user/${getLoggedInUser().did}`, {headers:{token : getToken()}})
+        const response=await axios.get(`http://localhost:8000/api/task/v1/user/${getLoggedInUser().did}`, {headers:{token : getToken()}})
         console.log(response.data);
        // res.json(response.data);
         setUser(response.data[0])
@@ -35,7 +35,7 @@ export const User = () => {
         
       }
       const deldev=async(item)=>{
-        const res=await axios.delete(`http://localhost:8000/api/dev/deldev/${item}`,{headers:{token : getToken()}});
+        const res=await axios.delete(`http://localhost:8000/api/dev/v1/deleteDev/${item}`,{headers:{token : getToken()}});
         console.log(res.data);
       }
     return (

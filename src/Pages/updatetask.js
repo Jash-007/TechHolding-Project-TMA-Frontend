@@ -25,29 +25,15 @@ export const Updatetask = (props) => {
     const nav = useNavigate();
 
     const item = loc.state ? loc.state.item : null;
-    // useEffect(() => {
-    //     if (item) {
-    //       // Set initial data if item is available
-    //       setData({
-    //         tname: item.tname || '',
-    //         tdesc: item.tdesc || '',
-    //         tstart: item.tstart || '',
-    //         tend: item.tend || '',
-    //         tstatus: item.tstatus || '',
-    //         did: item.did || '',
-    //         dname: item.dname || '1',
-    //       });
-    //     }
-    //   }, [item]);
     const handlesubmit = async (e) => {
         e.preventDefault()
         const tid = item;
         console.log(tid);
         try {
             console.log(data)
-            const response = await axios.put(`http://localhost:8000/api/task/update/${tid}`, { tname: data.tname, tdesc: data.tdesc, tstart: data.tstart, tend: data.tend, tstatus: data.tstatus, dname: data.dname, did: data.did });
+            const response = await axios.put(`http://localhost:8000/api/task/v1/updateTask/${tid}`, { tname: data.tname, tdesc: data.tdesc, tstart: data.tstart, tend: data.tend, tstatus: data.tstatus, dname: data.dname, did: data.did });
             console.log(response.data);
-            // nav('/admin')
+            nav('/admin')
         }
         catch (error) {
             console.log(error);

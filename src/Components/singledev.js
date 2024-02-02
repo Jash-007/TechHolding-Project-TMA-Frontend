@@ -11,7 +11,7 @@ export const Singledev = (props) => {
         
       }
       const deldev=async(item)=>{
-        const res=await axios.delete(`http://localhost:8000/api/dev/deldev/${item}`,{headers:{token : getToken()}});
+        const res=await axios.delete(`http://localhost:8000/api/dev/v1/deleteDev/${item}`,{headers:{token : getToken()}});
         console.log(res.data);
       }
   return (
@@ -36,21 +36,9 @@ export const Singledev = (props) => {
    <br></br><br></br>
    <div style={{color:'red'}}>
    <button  onClick={()=>{deldev(props.item.did)}}>Delete</button></div>
-   {/* End: {props.item.tend} */}
           </div>
         </h2>
       </div>
-  
-    
-  
-   
-  
-  
-    
-  
-    
-      
-  
     </div>
   </div>
   )

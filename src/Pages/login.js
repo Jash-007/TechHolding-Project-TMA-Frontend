@@ -9,7 +9,7 @@ const Login = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:8000/api/dev/login", {
+    const response = await fetch("http://localhost:8000/api/dev/v1/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
